@@ -61,3 +61,5 @@ class RegistrationClassPage(BasePage):
     def registration_assert(self):
         link_in = self.find_element(RegisterPageLocators.VALIDATION_CODE)
         assert link_in, "Registration Failed"
+
+

@@ -21,3 +21,8 @@ def test_register_form(browser, record_testsuite_property):
     entered_to.password_res("qwerty")
     entered_to.submit_button_registration()
     entered_to.registration_assert()
+
+
+def test_login_form(browser, record_testsuite_property):
+    entered_to = RegistrationClassPage(browser)
+    entered_to.open()
