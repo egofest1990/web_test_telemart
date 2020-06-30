@@ -62,4 +62,17 @@ class RegistrationClassPage(BasePage):
         link_in = self.find_element(RegisterPageLocators.VALIDATION_CODE)
         assert link_in, "Registration Failed"
 
+    def entered_email_or_phone(self, word):
+        link_in = self.find_element(RegisterPageLocators.LOGIN_EMAIL_OR_PHONE)
+        link_in.send_keys(word)
+        return link_in
 
+    def entered_password_for_login(self, word):
+        link_in = self.find_element(RegisterPageLocators.LOGIN_PASSWORD)
+        link_in.send_keys(word)
+        return link_in
+
+    def submit_for_login(self):
+        linl_in = self.find_element(RegisterPageLocators.SUBMIT_LOGIN)
+        linl_in.click()
+        return linl_in
