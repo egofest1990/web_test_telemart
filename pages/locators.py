@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class RegisterPageLocators:
+class RegisterandLoginPageLocators:
     POPUP = (By.CSS_SELECTOR, "a.b-link-enter")
     POPUP_NEWREG = (By.CSS_SELECTOR, "a.b-ptn-newreg")
     POPUP_LOGIN = (By.CSS_SELECTOR, ".b-ptn-enter")
@@ -17,3 +17,4 @@ class RegisterPageLocators:
     LOGIN_EMAIL_OR_PHONE = (By.ID, "popupInputEnterMail")
     LOGIN_PASSWORD = (By.ID, "popupInputEnterPasw")
     SUBMIT_LOGIN = (By.CSS_SELECTOR, ".b-btn.b-btn-send")
+    ASSERT_PERSONAL_CABINET_IS_PRESENT = (By.CSS_SELECTOR, "#dropdownUserNav > span")

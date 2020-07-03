@@ -26,3 +26,9 @@ def test_register_form(browser, record_testsuite_property):
 def test_login_form(browser, record_testsuite_property):
     entered_to = RegistrationClassPage(browser)
     entered_to.open()
+    entered_to.popup_sub()
+    entered_to.b_ptn_enter()
+    entered_to.entered_email_or_phone("egofest1990@gmail.com")
+    entered_to.entered_password_for_login("16526381")
+    entered_to.submit_for_login()
+    entered_to.login_assert_for_pop_up()

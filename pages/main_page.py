@@ -1,78 +1,87 @@
 from .base_page import BasePage
-from .locators import RegisterPageLocators
+from .locators import RegisterandLoginPageLocators
 import time
 
 
 class RegistrationClassPage(BasePage):
     def popup_sub(self):
-        link_inn = self.find_element(RegisterPageLocators.POPUP)
+        link_inn = self.find_element(RegisterandLoginPageLocators.POPUP)
         time.sleep(1)
         link_inn.click()
         time.sleep(1)
         return link_inn
 
     def first_name(self, word):
-        link_inn = self.find_element(RegisterPageLocators.FIRST_NAME)
+        link_inn = self.find_element(RegisterandLoginPageLocators.FIRST_NAME)
         link_inn.send_keys(word)
         return link_inn
 
     def last_name(self, word):
-        link_inn = self.find_element(RegisterPageLocators.LAST_NAME)
+        link_inn = self.find_element(RegisterandLoginPageLocators.LAST_NAME)
         link_inn.send_keys(word)
         return link_inn
 
     def father_name(self, word):
-        link_inn = self.find_element(RegisterPageLocators.FATHER_NAME)
+        link_inn = self.find_element(RegisterandLoginPageLocators.FATHER_NAME)
         link_inn.send_keys(word)
         return link_inn
 
     def phone_number(self, word):
-        link_inn = self.find_element(RegisterPageLocators.PHONE_NUMBER)
+        link_inn = self.find_element(RegisterandLoginPageLocators.PHONE_NUMBER)
         link_inn.send_keys(word)
         return link_inn
 
     def email_adress_for_reg(self, word):
-        link_inn = self.find_element(RegisterPageLocators.EMAIL)
+        link_inn = self.find_element(RegisterandLoginPageLocators.EMAIL)
         link_inn.send_keys(word)
         return link_inn
 
     def password(self, word):
-        link_inn = self.find_element(RegisterPageLocators.PASSWORD)
+        link_inn = self.find_element(RegisterandLoginPageLocators.PASSWORD)
         link_inn.send_keys(word)
         return link_inn
 
     def password_res(self, word):
-        link_inn = self.find_element(RegisterPageLocators.PASSWORD_RES)
+        link_inn = self.find_element(RegisterandLoginPageLocators.PASSWORD_RES)
         link_inn.send_keys(word)
         return link_inn
 
     def popup_newreg(self):
-        link_inn = self.find_element(RegisterPageLocators.POPUP_NEWREG)
+        link_inn = self.find_element(RegisterandLoginPageLocators.POPUP_NEWREG)
         link_inn.click()
         time.sleep(1)
         link_inn.click()
         return link_inn
 
     def submit_button_registration(self):
-        link_in = self.find_element(RegisterPageLocators.BUTTON_SUBMIT)
+        link_in = self.find_element(RegisterandLoginPageLocators.BUTTON_SUBMIT)
         link_in.click()
         return link_in
 
     def registration_assert(self):
-        link_in = self.find_element(RegisterPageLocators.VALIDATION_CODE)
+        link_in = self.find_element(RegisterandLoginPageLocators.VALIDATION_CODE)
         assert link_in, "Registration Failed"
 
+    def b_ptn_enter(self):
+        link_in = self.find_element(RegisterandLoginPageLocators.POPUP_LOGIN)
+        link_in.click()
+        return link_in
+
     def entered_email_or_phone(self, word):
-        link_in = self.find_element(RegisterPageLocators.LOGIN_EMAIL_OR_PHONE)
+        link_in = self.find_element(RegisterandLoginPageLocators.LOGIN_EMAIL_OR_PHONE)
         link_in.send_keys(word)
         return link_in
 
     def entered_password_for_login(self, word):
-        link_in = self.find_element(RegisterPageLocators.LOGIN_PASSWORD)
+        link_in = self.find_element(RegisterandLoginPageLocators.LOGIN_PASSWORD)
         link_in.send_keys(word)
         return link_in
 
     def submit_for_login(self):
-        link_in = self.find_element(RegisterPageLocators.SUBMIT_LOGIN)
+        link_in = self.find_element(RegisterandLoginPageLocators.SUBMIT_LOGIN)
         link_in.click()
         return link_in
+
+    def login_assert_for_pop_up(self):
+        link_in = self.find_element(RegisterandLoginPageLocators.ASSERT_PERSONAL_CABINET_IS_PRESENT)
+        assert link_in, "Personal cabinet not found"
