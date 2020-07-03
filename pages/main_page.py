@@ -73,6 +73,6 @@ class RegistrationClassPage(BasePage):
         return link_in
 
     def submit_for_login(self):
-        linl_in = self.find_element(RegisterPageLocators.SUBMIT_LOGIN)
-        linl_in.click()
-        return linl_in
+        link_in = self.find_element(RegisterPageLocators.SUBMIT_LOGIN)
+        link_in.click()
+        return link_in
