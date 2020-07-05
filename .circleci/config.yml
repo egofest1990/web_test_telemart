@@ -1,21 +1,68 @@
-version: 2.1
+workflows:
+  version: 2
 
-orbs:
-  python: circleci/python@0.2.1
+  test_workflow:
+    jobs:
+     - test
+     - report:
+          requires:
+           - test
 
 jobs:
-  build-and-test:
-    executor: python/default
+  test:
+    docker:
+      - image: circleci/python:3.6.6-stretch-node-browsers
+    working_directory: ~/repo
+    parallelism: 2
     steps:
-      - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
-      - run:
-          command: ./manage.py test
-          name: Test
+    - checkout
+    - run:
+          name: install dependencies
+          command: |
+           google-chrome --version
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
 
-workflows:
-  main:
-    jobs:
-      - build-and-test
+    - run:
+        name: run smoke tests
+        command: |
+         . venv/bin/activate
+          TEST_FILES="$(circleci tests glob "tests/test_*.py" | circleci tests split --split-by=timings)"
+          python3 -m pytest -m smoke --alluredir ~/repo/raw_test_result_jsons $TEST_FILES
+
+    - run:
+        name: run regression tests
+        command: |
+         . venv/bin/activate
+          TEST_FILES="$(circleci tests glob "tests/test_*.py" | circleci tests split --split-by=timings)"
+          python3 -m pytest -m "not smoke" --alluredir ~/repo/raw_test_result_jsons $TEST_FILES
+
+    - persist_to_workspace:
+        root: .
+        paths:
+         - raw_test_result_jsons
+
+  report:
+    docker:
+      - image: circleci/python:3.6.6-stretch-node-browsers
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: install allure CLI
+          command: |
+           uname -a
+            sudo npm install -g allure-commandline --save-dev
+
+      - run:
+          name: report
+          command: |
+           allure generate -c ~/repo/raw_test_result_jsons -o ~/repo/test-reports
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
+          when: always
