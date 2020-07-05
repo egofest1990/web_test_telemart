@@ -1,8 +1,10 @@
 from .pages.main_page import RegistrationClassPage
 import random
 import allure
+import pytest
 
 
+@pytest.mark.smoke
 @allure.title("Test register")
 @allure.story("Open pages")
 def test_register_form(browser, record_testsuite_property):
