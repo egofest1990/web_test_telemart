@@ -1,13 +1,18 @@
-version: 2
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
 jobs:
-  build:
-    docker:
-      - image: circleci/python:3.8.0-stretch-node-browsers
-    working_directory: ~/repo
+  build-and-test:
+    executor: python/default
     steps:
       - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
       - run:
-          name: install dependencies
+          name: Test telemart.ua
           command: |
             python3 -m venv venv
             . venv/bin/activate
@@ -23,6 +28,7 @@ jobs:
             . venv/bin/activate
             python3 -m pytest -m smoke --alluredir ~/repo/raw_test_result_jsons
             allure generate -c ~/repo/raw_test_result_jsons -o ~/repo/test-reports
+
       - store_artifacts:
           path: test-reports
           destination: test-reports
