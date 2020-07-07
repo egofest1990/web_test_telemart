@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import RegisterandLoginPageLocators
+from .locators import PasswordRecoveryLocators
 import time
 
 
@@ -85,3 +86,22 @@ class RegistrationClassPage(BasePage):
     def login_assert_for_pop_up(self):
         link_in = self.find_element(RegisterandLoginPageLocators.ASSERT_PERSONAL_CABINET_IS_PRESENT)
         assert link_in, "Personal cabinet not found"
+
+    def forget_password_form(self):
+        link_inn = self.find_element(PasswordRecoveryLocators.FORGET_PASSWORD)
+        link_inn.click()
+        return link_inn
+
+    def email_or_phone_for_recovery(self, word):
+        link_inn = self.find_element(PasswordRecoveryLocators.EMAIL_OR_PHONE_FOR_RECOVERY)
+        link_inn.send_keys(word)
+        return link_inn
+
+    def submit_recovery(self):
+        link_inn = self.find_element(PasswordRecoveryLocators.SUBMIT_RECOVERY)
+        link_inn.click()
+        return link_inn
+
+    def recovery_assert_message(self):
+        link_inn = self.find_element(PasswordRecoveryLocators.ASSERT_RECOVERY_MESSAGE)
+        assert link_inn, "Not message"

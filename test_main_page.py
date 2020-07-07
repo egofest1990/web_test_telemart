@@ -36,3 +36,15 @@ def test_login_form(browser, record_testsuite_property):
     entered_to.entered_password_for_login("16526381")
     entered_to.submit_for_login()
     entered_to.login_assert_for_pop_up()
+
+
+@pytest.mark.smoke
+@allure.title("Test forget password")
+def test_forget_password(browser, record_testsuite_property):
+    entered_to = RegistrationClassPage(browser)
+    entered_to.open()
+    entered_to.popup_sub()
+    entered_to.forget_password_form()
+    entered_to.email_or_phone_for_recovery("igorfesenko25@gmail.com")
+    entered_to.submit_recovery()
+    entered_to.recovery_assert_message()
