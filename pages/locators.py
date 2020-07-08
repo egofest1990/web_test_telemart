@@ -26,3 +26,8 @@ class PasswordRecoveryLocators:
     SUBMIT_RECOVERY = (By.CSS_SELECTOR, ".b-btn.b-btn-restore")
     ASSERT_RECOVERY_MESSAGE = (By.CSS_SELECTOR, "#popupERLContent > div > a")
 
+
+class LogoutFromPersonalArea:
+    LINK_USER_EXIT = (By.CSS_SELECTOR, ".b-link-user-exit")
+    ASSERT_USER_EXIT_PERSONAL_AREA = (By.CSS_SELECTOR, ".b-link-enter")
+

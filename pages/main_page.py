@@ -1,6 +1,7 @@
 from .base_page import BasePage
 from .locators import RegisterandLoginPageLocators
 from .locators import PasswordRecoveryLocators
+from .locators import LogoutFromPersonalArea
 import time
 
 
@@ -105,3 +106,12 @@ class RegistrationClassPage(BasePage):
     def recovery_assert_message(self):
         link_inn = self.find_element(PasswordRecoveryLocators.ASSERT_RECOVERY_MESSAGE)
         assert link_inn, "Not message"
+
+    def exit_login_page(self):
+        link_in = self.find_element(LogoutFromPersonalArea.LINK_USER_EXIT)
+        link_in.click()
+        return link_in
+
+    def checking_logout(self):
+        link_in = self.find_element(LogoutFromPersonalArea.ASSERT_USER_EXIT_PERSONAL_AREA)
+        assert link_in, "Not logout"

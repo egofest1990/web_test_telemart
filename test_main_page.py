@@ -48,3 +48,18 @@ def test_forget_password(browser, record_testsuite_property):
     entered_to.email_or_phone_for_recovery("igorfesenko25@gmail.com")
     entered_to.submit_recovery()
     entered_to.recovery_assert_message()
+
+
+@pytest.mark.smoke
+@allure.title("Test logout")
+def test_exit_personal_area(browser, record_testsuite_property):
+    entered_to = RegistrationClassPage(browser)
+    entered_to.open()
+    entered_to.popup_sub()
+    entered_to.b_ptn_enter()
+    entered_to.entered_email_or_phone("egofest1990@gmail.com")
+    entered_to.entered_password_for_login("16526381")
+    entered_to.submit_for_login()
+    entered_to.exit_login_page()
+    entered_to.checking_logout()
+
