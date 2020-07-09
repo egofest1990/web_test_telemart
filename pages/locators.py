@@ -17,7 +17,7 @@ class RegisterandLoginPageLocators:
     LOGIN_EMAIL_OR_PHONE = (By.ID, "popupInputEnterMail")
     LOGIN_PASSWORD = (By.ID, "popupInputEnterPasw")
     SUBMIT_LOGIN = (By.CSS_SELECTOR, ".b-btn.b-btn-send")
-    ASSERT_PERSONAL_CABINET_IS_PRESENT = (By.CSS_SELECTOR, "#dopdownUserNav > span")
+    ASSERT_PERSONAL_CABINET_IS_PRESENT = (By.CSS_SELECTOR, "#dropdownUserNav > span")
 
 
 class PasswordRecoveryLocators:
