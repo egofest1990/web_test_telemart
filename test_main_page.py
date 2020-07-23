@@ -28,7 +28,7 @@ def test_register_form(browser):
 @pytest.mark.smoke
 @allure.title("Test login")
 @pytest.mark.ui
-def test_login_form(browser, record_testsuite_property):
+def test_login_form(browser):
     entered_to = RegistrationClassPage(browser)
     entered_to.open()
     entered_to.popup_sub()
