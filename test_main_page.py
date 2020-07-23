@@ -7,7 +7,7 @@ import pytest
 @pytest.mark.smoke
 @allure.title("Test register")
 @pytest.mark.ui
-def test_register_form(browser, record_testsuite_property):
+def test_register_form(browser):
     nmbr = random.randint(2, 100000000000)
     nmbr_phone = random.randint(0000000, 9999999)
     entered_to = RegistrationClassPage(browser)
@@ -42,7 +42,7 @@ def test_login_form(browser, record_testsuite_property):
 @pytest.mark.smoke
 @allure.title("Test forget password")
 @pytest.mark.ui
-def test_forget_password(browser, record_testsuite_property):
+def test_forget_password(browser):
     entered_to = RegistrationClassPage(browser)
     entered_to.open()
     entered_to.popup_sub()
@@ -55,7 +55,7 @@ def test_forget_password(browser, record_testsuite_property):
 @pytest.mark.smoke
 @allure.title("Test logout")
 @pytest.mark.ui
-def test_exit_personal_area(browser, record_testsuite_property):
+def test_exit_personal_area(browser):
     entered_to = RegistrationClassPage(browser)
     entered_to.open()
     entered_to.popup_sub()

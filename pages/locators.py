@@ -13,7 +13,7 @@ class RegisterandLoginPageLocators:
     PASSWORD = (By.ID, "popupInputRegPasw")
     PASSWORD_RES = (By.ID, "popupInputRegPaswRes")
     BUTTON_SUBMIT = (By.CSS_SELECTOR, "button.b-btn.b-btn-newreg")
-    VALIDATION_CODE =(By.ID, "popupInputValidationCode")
+    VALIDATION_CODE = (By.ID, "popupInputValidationCode")
     LOGIN_EMAIL_OR_PHONE = (By.ID, "popupInputEnterMail")
     LOGIN_PASSWORD = (By.ID, "popupInputEnterPasw")
     SUBMIT_LOGIN = (By.CSS_SELECTOR, ".b-btn.b-btn-send")
@@ -30,4 +30,3 @@ class PasswordRecoveryLocators:
 class LogoutFromPersonalArea:
     LINK_USER_EXIT = (By.CSS_SELECTOR, ".b-link-user-exit")
     ASSERT_USER_EXIT_PERSONAL_AREA = (By.CSS_SELECTOR, ".b-link-enter")
-
